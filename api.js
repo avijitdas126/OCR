@@ -37,9 +37,9 @@ app.post("/upload/ocr", async (req, res) => {
         { resource_type: "auto", folder: "ocr" },
         async (error, result) => {
           if (error) return res.status(500).json({ error: error.message });
-          let id = result?.public_id;
+          let id = result.public_id;
 
-          let url = result?.secure_url;
+          let url = result.secure_url;
         
             let text = await ocr(url);
             delete_file(id);
