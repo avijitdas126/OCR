@@ -45,6 +45,7 @@ app.post("/upload/ocr", async (req, res) => {
           let url = result.secure_url;
         
             let text = await ocr(url);
+          console.log(text)
             delete_file(id);
             res.json({ text });
         
