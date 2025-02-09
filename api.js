@@ -21,7 +21,10 @@ let delete_file = async (id) => {
     console.log(error);
   }
 };
-
+// for health 
+app.get("/ping",(req,res)=>{
+  return res.status(200).json({message:"OK"});
+})
 app.post("/upload/ocr", async (req, res) => {
 
   try {
