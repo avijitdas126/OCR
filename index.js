@@ -1,15 +1,11 @@
-const tesseract = require('node-tesseract-ocr');
+const { createWorker } = require('tesseract.js');
 
-const config = {
-  lang: 'eng',
-  oem: 1,
-  psm: 3,
-};
-
-async function ocr(filePath) {
+async function ocr(url) {
   try {
-    const text = await tesseract.recognize(filePath, config);
-    return text;
+  const worker = await createWorker('eng');
+  const ret = await worker.recognize(url);
+  console.log(ret.data.text);
+  return ret.data.text;
   } catch (error) {
     console.error('OCR Error:', error);
     throw error;
